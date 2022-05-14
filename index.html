@@ -12,13 +12,26 @@
     <body>
         <header class="header">
             <h1>Weather Dashboard</h1>
+            <p id="todays-date"></p>
         </header>
-        <main class="container1">
-            <div class="search-bar">
-                <input type="text" class="form-control" placeholder="City Name" />
-                <button>Search</button>
+        <main class="container">
+            <div class="row">
+                <div class="col-sm-4 bg-light">
+                    <h4 class="m-3">Search a city</h4>
+                    <div class="input-group m-3" id="search-bar">
+                        <input type="text" class="form-control" placeholder="City Name" />
+                        <div class="input-group-append" id="city">
+                            <button class="btn bg-secondary text-light" id="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <button class="btn bg-secondary ml-3 text-light" id="clear-history">Clear History</button>
+                    <ul class="list-group">
+
+                    </ul>
+                </div>
+
+                
             </div>
-            
         </main>
     </body>
 </html>
