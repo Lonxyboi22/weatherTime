@@ -37,7 +37,7 @@ function clearStorage(){
   }
 
 function weatherByLocation(city){
-    var query1='http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=' + apiKey;
+    var query1='https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=' + apiKey;
     fetch(query1).then(function(response){
         if(response.ok){
             response.json().then(function(data){
