@@ -1,7 +1,7 @@
 // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 //http://api.openweathermap.org/geo/1.0/direct?q={city name}&appid={API key}
-var cities = [];
+var cityListEl = document.getElementById("city-list");
 var cityButtonEl = document.querySelector("#search-button");
 var cityFormInputEl = document.getElementById("user-input");
 var cityInput = document.querySelector("#city");
@@ -19,9 +19,18 @@ var submitForm = function(event){
     //insert local storage function:
 }
 
-function saveCities(){
-
-}
+    cityButtonEl.addEventListener("click", function(event) {
+        event.preventDefault();
+        var city = cityFormInputEl.value.trim();
+        // create user object from submission
+        var cities = {
+            city
+        };
+      
+        // set new submission to local storage 
+        localStorage.setItem(city, JSON.stringify(cities));
+        console.log(localStorage);
+      });
 
 function clearStorage(){ 
     localStorage.clear()
@@ -84,26 +93,31 @@ function displayForcast(data){
         const v = 25;
         const m = 33;
         document.getElementById('city-name').innerHTML = data.city.name;
+        document.getElementById('des1').innerHTML = data.list[i].weather[0].description;
         document.getElementById('date'+ i).innerHTML = "Date: " + data.list[i].dt_txt;
         document.getElementById('temp'+ i).innerHTML = "Temp: " + data.list[i].main.temp;
         document.getElementById('wind'+ i).innerHTML = "Wind: " + data.list[i].wind.speed;
         document.getElementById('humd'+ i).innerHTML = "Humidity: " + data.list[i].main.humidity;
         
+        document.getElementById('des2').innerHTML = data.list[t].weather[0].description;
         document.getElementById('date2').innerHTML = "Date: " + data.list[t].dt_txt;
         document.getElementById('temp2').innerHTML = "Temp: " + data.list[t].main.temp;
         document.getElementById('wind2').innerHTML = "Wind: " + data.list[t].wind.speed;
         document.getElementById('humd2').innerHTML = "Humidity: " + data.list[t].main.humidity;
 
+        document.getElementById('des3').innerHTML = data.list[j].weather[0].description;
         document.getElementById('date3').innerHTML = "Date: " + data.list[j].dt_txt;
         document.getElementById('temp3').innerHTML = "Temp: " + data.list[j].main.temp;
         document.getElementById('wind3').innerHTML = "Wind: " + data.list[j].wind.speed;
         document.getElementById('humd3').innerHTML = "Humidity: " + data.list[j].main.humidity;
         
+        document.getElementById('des4').innerHTML = data.list[v].weather[0].description;
         document.getElementById('date4').innerHTML = "Date: " + data.list[v].dt_txt;
         document.getElementById('temp4').innerHTML = "Temp: " + data.list[v].main.temp;
         document.getElementById('wind4').innerHTML = "Wind: " + data.list[v].wind.speed;
         document.getElementById('humd4').innerHTML = "Humidity: " + data.list[v].main.humidity;
         
+        document.getElementById('des5').innerHTML = data.list[m].weather[0].description;
         document.getElementById('date5').innerHTML = "Date: " + data.list[m].dt_txt;
         document.getElementById('temp5').innerHTML = "Temp: " + data.list[m].main.temp;
         document.getElementById('wind5').innerHTML = "Wind: " + data.list[m].wind.speed;
